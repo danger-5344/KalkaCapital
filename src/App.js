@@ -14,6 +14,11 @@ export default function MyApp() {
 
     <div>
       <Header />
+      <main>
+        <section className="h-screen flex items-center justify-center bg-gray-100">
+          <h1 className="text-4xl font-bold text-gray-800">Welcome to My App!</h1>
+        </section>
+      </main>
       <Hero />
       <Services/>
       <About/>
