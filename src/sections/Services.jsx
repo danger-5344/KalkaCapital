@@ -42,20 +42,20 @@ function Services() {
   return (
     <section className="my-10">
       <div className="container">
-        <h2 className="section-title my-5">What we provide for your feasability.</h2>
+        <h2 className="section-title my-5">
+          What we provide for your feasability.
+        </h2>
 
-        <div className="container">
-          <div className="cardsContainer md:grid grid-cols-2 lg:grid-cols-3">
-            {serviceData.map((services) => (
-              <ServiceCard
-                service={services.service}
-                desc={services.desc}
-                color={services.color}
-                icon={services.icon}
-                key={services.color}
-              />
-            ))}
-          </div>
+        <div className="cardsContainer md:grid grid-cols-2 lg:grid-cols-3">
+          {serviceData.map((services) => (
+            <ServiceCard
+              service={services.service}
+              desc={services.desc}
+              color={services.color}
+              icon={services.icon}
+              key={services.color}
+            />
+          ))}
         </div>
       </div>
     </section>
