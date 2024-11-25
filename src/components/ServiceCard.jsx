@@ -1,7 +1,7 @@
 const ServiceCard = ({ service, desc, color, icon }) => {
   return (
     <div
-      className="card max-w-sm flex flex-col items-center m-6 transition-transform transform hover:scale-105 group"
+      className="card max-w-sm flex flex-col items-center m-6 transition-transform transform hover:shadow-xl group"
       key={color}
     >
       <div
