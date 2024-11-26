@@ -1,42 +1,96 @@
-const TestimonialCard = ({ testimonial }) => {
+import React from "react";
+import avatar1 from "../assests/avatar/avatar-1.png";
+import avatar2 from "../assests/avatar/avatar-2.png";
+import avatar3 from "../assests/avatar/avatar-3.png";
+
+const testimonials = [
+  {
+    name: "Kamley Doe",
+    designation: "CEO, Tech Solutions",
+    image: avatar1,
+    message:
+      "This service exceeded my expectations! The team was professional, and the results were fantastic. Highly recommend.",
+    rating: 5, // 5 stars
+  },
+  {
+    name: "Jane Smith",
+    designation: "Marketing Manager, Creative Co.",
+    image: avatar2,
+    message:
+      "I loved the attention to detail and the clear communication throughout the project. Truly a pleasure to work with!",
+    rating: 4, // 4 stars
+  },
+  {
+    name: "Carlos Ruiz",
+    designation: "Freelance Developer",
+    image: avatar3,
+    message:
+      "Great experience! The tools provided made my job much easier, and the support team was always there to help.",
+    rating: 5, // 5 stars
+  },
+];
+
+const Testimonials = () => {
   return (
-    <div className="testimonial-card max-w-md mx-auto p-6 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-shadow">
-      {/* Profile Section */}
-      <div className="profile flex items-center mb-4 key" key={testimonial.name}>
-        <img
-          src={testimonial.image} // Profile picture
-          alt={`${testimonial.name}'s profile`}
-          className="w-16 h-16 rounded-full border-2 border-green-500"
-        />
-        <div className="ml-4">
-          <p className="name font-bold text-lg text-gray-800">
-            {testimonial.name}
-          </p>
-          <p className="designation text-sm text-gray-600">
-            {testimonial.designation}
-          </p>
-        </div>
+    <section className="py-16 bg-gray-50">
+      <div className="text-center mb-12">
+        <h2 className="text-3xl font-bold text-gray-800">
+          What Others Say About Us
+        </h2>
+        <p className="text-gray-600 mt-2">
+          Hear from our satisfied clients and their experiences.
+        </p>
       </div>
-      {/* Testimonial Content */}
-      <p className="testimonial-content text-gray-700 text-base italic leading-relaxed">
-        "{testimonial.message}"
-      </p>
-      {/* Optional Rating Section */}
-      <div className="rating flex items-center mt-4">
-        {Array.from({ length: testimonial.rating }, (_, i) => (
-          <svg
-            key={i}
-            className="w-5 h-5 text-yellow-400"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg"
+
+      <div className="max-w-7xl mx-auto px-6 grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        {testimonials.map((testimonial, index) => (
+          <div
+            key={index}
+            className="flip-card group perspective w-full max-w-sm mx-auto"
           >
-            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.974a1 1 0 00.95.69h4.174c.969 0 1.371 1.24.588 1.81l-3.388 2.46a1 1 0 00-.364 1.118l1.286 3.974c.3.921-.755 1.688-1.539 1.118l-3.388-2.46a1 1 0 00-1.176 0l-3.388 2.46c-.784.57-1.838-.197-1.539-1.118l1.286-3.974a1 1 0 00-.364-1.118L2.34 8.401c-.783-.57-.38-1.81.588-1.81h4.174a1 1 0 00.95-.69l1.286-3.974z"></path>
-          </svg>
+            <div className="flip-card-inner relative w-full h-72 transition-transform duration-700 transform group-hover:rotate-y-180">
+              {/* Front Side */}
+              <div className="flip-card-front absolute backface-hidden w-full h-full bg-white shadow-md rounded-lg p-6 flex flex-col justify-center items-center">
+                <img
+                  src={testimonial.image}
+                  alt={testimonial.name}
+                  className="rounded-full w-20 h-20 mb-4 object-cover"
+                />
+                <h3 className="text-lg font-bold text-gray-800">
+                  {testimonial.name}
+                </h3>
+                <p className="text-sm text-gray-500">{testimonial.designation}</p>
+              </div>
+
+              {/* Back Side */}
+              <div className="flip-card-back absolute backface-hidden w-full h-full bg-red-500 text-white shadow-md rounded-lg p-6 flex flex-col justify-center items-center rotate-y-180">
+                <p className="italic mb-4">{`"${testimonial.message}"`}</p>
+                <div className="flex mt-2 space-x-1">
+                  {Array.from({ length: 5 }).map((_, starIndex) => (
+                    <svg
+                      key={starIndex}
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill={starIndex < testimonial.rating ? "#FFF" : "#F87171"}
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="w-5 h-5"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.658 5.092a1 1 0 00.95.69h5.356c.969 0 1.371 1.24.588 1.81l-4.33 3.17a1 1 0 00-.364 1.118l1.658 5.093c.3.921-.755 1.688-1.54 1.118l-4.33-3.17a1 1 0 00-1.175 0l-4.33 3.17c-.785.57-1.84-.197-1.54-1.118l1.658-5.093a1 1 0 00-.364-1.118l-4.33-3.17c-.783-.57-.381-1.81.588-1.81h5.356a1 1 0 00.95-.69l1.658-5.092z"
+                      />
+                    </svg>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 
-export default TestimonialCard;
+export default Testimonials;

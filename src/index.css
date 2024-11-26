@@ -1,4 +1,31 @@
-@tailwind base;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+body {
+  @apply font-sans text-gray-700;
+}
+/* Flip Card Effect */
+.perspective {
+    perspective: 1000px;
+  }
+  
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+  
+  .rotate-y-180 {
+    transform: rotateY(180deg);
+  }
+  
+  .relative {
+    transform-style: preserve-3d;
+    transition: transform 0.4s ease-in-out;
+  }
+  
+  .flip:hover .relative {
+    transform: rotateY(180deg); /* Flip the card */
+  }
+  
+ @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
@@ -7,3 +34,5 @@
     @apply text-center text-3xl md:text-[54px] md:leading-[60px] font-bold tracking-tighter bg-gradient-to-b from-black to-[#800000] text-transparent bg-clip-text;
   }
 }
+
+      /* Flip Card Styles */
