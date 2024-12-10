@@ -2,7 +2,7 @@ import React from "react";
 
 const GradientSection = () => {
   return (
-    <section className="relative py-16 px-3">
+    <section className="relative py-16 px-3 bg-gray-50">
       {/* SVG Background with Drop Shadow */}
       <div className="absolute inset-0 -z-10">
         <svg
@@ -45,7 +45,7 @@ const GradientSection = () => {
 
           {/* Button */}
           <a
-            href=""
+            href="#t"
             className="inline-block bg-white text-red-500 font-semibold py-3 px-8 rounded-lg hover:bg-gray-800 hover:text-matt-red-300 transition duration-300"
           >
             Contact Now

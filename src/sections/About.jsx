@@ -55,7 +55,7 @@ function About() {
           </p>
           <div className="mt-6 flex justify-center lg:justify-start">
             
-            <button className="ml-4 px-6 py-3 bg-gray-300 text-gray-800 rounded-md shadow hover:bg-gray-400 transition-all transform hover:scale-105 focus:outline-none">
+            <button className="ml-4 px-6 py-3 bg-red-500 text-white rounded-md shadow hover:bg-red-600 transition-all transform hover:scale-105 focus:outline-none">
               Learn More
             </button>
           </div>

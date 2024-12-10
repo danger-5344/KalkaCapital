@@ -20,6 +20,29 @@ const Header = () => {
     setDropdownOpen((prev) => !prev);
   };
 
+
+  const [timeoutId, setTimeoutId] = useState(null);
+
+  const handleMouseEnter = () => {
+    // Clear any existing timeout to avoid premature closing
+    if (timeoutId) {
+      clearTimeout(timeoutId);
+      setTimeoutId(null);
+    }
+    // Open the dropdown immediately
+    setDropdownOpen(true);
+  };
+
+  const handleMouseLeave = () => {
+    // Set a timeout to close the dropdown after a delay
+    const id = setTimeout(() => {
+      setDropdownOpen(false);
+    }, 300); // Adjust delay in milliseconds as needed
+    setTimeoutId(id);
+  };
+
+
+
   return (
     <header
       className={`fixed top-0 w-full z-50 transition-all duration-500 ${
@@ -36,13 +59,13 @@ const Header = () => {
           {/* Navigation Links */}
           <nav className="hidden md:flex items-center space-x-6">
             <a
-              href="#home"
+              href="/"
               className="block text-gray-800 hover:text-red-600 hover:bg-gray-100 font-medium transition transform hover:scale-105 px-4 py-2 rounded-md"
             >
               Home
             </a>
             <a
-              href="#about"
+              href="/about"
               className="block text-gray-800 hover:text-red-600 hover:bg-gray-100 font-medium transition transform hover:scale-105 px-4 py-2 rounded-md"
             >
               About
@@ -50,12 +73,12 @@ const Header = () => {
 
             {/* Services Dropdown */}
             <div
-              className="relative"
-              onMouseEnter={() => setDropdownOpen(true)}
-              onMouseLeave={() => setDropdownOpen(false)}
+              className="relative "
+               onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
             >
               <button
-                className="flex items-center space-x-1 text-gray-800 hover:text-red-600 transition-colors text-gray-800 hover:bg-gray-100 font-medium transition transform hover:scale-105 px-1 py-2 rounded-md"
+                className="flex items-center space-x-1  hover:text-red-600 transition-colors text-gray-800 hover:bg-gray-100 font-medium  transform hover:scale-105 px-1 py-2 rounded-md"
                 onClick={toggleDropdown}
               >
                 <span>Services</span>
@@ -79,29 +102,35 @@ const Header = () => {
               {dropdownOpen && (
                 <div className="absolute top-full mt-2 bg-white shadow-lg rounded-lg w-48">
                   <a
-                    href="#service1"
+                    href="/loan"
                     className="block text-gray-800 hover:text-red-600 hover:bg-gray-100 font-medium transition transform hover:scale-105 px-4 py-2 rounded-md"
                   >
-                    Service 1
+                    Loans
                   </a>
                   <a
-                    href="#service2"
+                    href="/construction"
                     className="block text-gray-800 hover:text-red-600 hover:bg-gray-100 font-medium transition transform hover:scale-105 px-4 py-2 rounded-md"
                   >
-                    Service 2
+                    Construction
                   </a>
                   <a
-                    href="#service3"
+                    href="/investment"
                     className="block text-gray-800 hover:text-red-600 hover:bg-gray-100 font-medium transition transform hover:scale-105 px-4 py-2 rounded-md"
                   >
-                    Service 3
+                    Investment
+                  </a>
+                  <a
+                    href="/business"
+                    className="block text-gray-800 hover:text-red-600 hover:bg-gray-100 font-medium transition transform hover:scale-105 px-4 py-2 rounded-md"
+                  >
+                    Business Consultancy
                   </a>
                 </div>
               )}
             </div>
 
             <a
-              href="#contact"
+              href="/contact"
               className="block text-gray-800 hover:text-red-600 hover:bg-gray-100 font-medium transition transform hover:scale-105 px-4 py-2 rounded-md"
             >
               Contact
@@ -139,20 +168,20 @@ const Header = () => {
       {menuOpen && (
         <div className="md:hidden bg-white shadow-md rounded-lg py-4 px-6">
           <a
-            href="#home"
+            href="/"
             className="block text-gray-800 hover:text-red-600 hover:bg-gray-100 font-medium transition transform hover:scale-105 px-4 py-2 rounded-md"
           >
             Home
           </a>
           <a
-            href="#about"
+            href="/about"
             className="block text-gray-800 hover:text-red-600 hover:bg-gray-100 font-medium transition transform hover:scale-105 px-4 py-2 rounded-md"
           >
             About
           </a>
           <div className="relative">
             <button
-              className="flex items-center space-x-1 text-gray-800 hover:text-red-600 transition-colors text-gray-800 hover:bg-gray-100 font-medium transition transform hover:scale-105 px-4 py-2 rounded-md"
+              className="flex items-center space-x-1  hover:text-red-600 transition-colors text-gray-800 hover:bg-gray-100 font-medium transform hover:scale-105 px-4 py-2 rounded-md"
               onClick={toggleDropdown}
             >
               <span>Services</span>
@@ -176,28 +205,34 @@ const Header = () => {
             {dropdownOpen && (
               <div className="bg-white shadow-md rounded-lg py-2 px-4">
                 <a
-                  href="#service1"
+                  href="/loan"
                   className="block text-gray-800 hover:text-red-600 hover:bg-gray-100 font-medium transition transform hover:scale-105 px-4 py-2 rounded-md"
                 >
-                  Service 1
+                  Loan
                 </a>
                 <a
-                  href="#service2"
+                  href="/constrution"
                   className="block text-gray-800 hover:text-red-600 hover:bg-gray-100 font-medium transition transform hover:scale-105 px-4 py-2 rounded-md"
                 >
-                  Service 2
+                  Construction
                 </a>
                 <a
-                  href="#service3"
+                  href="/investement"
                   className="block text-gray-800 hover:text-red-600 hover:bg-gray-100 font-medium transition transform hover:scale-105 px-4 py-2 rounded-md"
                 >
-                  Service 3
+                  Investment
+                </a>
+                <a
+                  href="/business"
+                  className="block text-gray-800 hover:text-red-600 hover:bg-gray-100 font-medium transition transform hover:scale-105 px-4 py-2 rounded-md"
+                >
+                  Business Consultancy
                 </a>
               </div>
             )}
           </div>
           <a
-            href="#contact"
+            href="/contact"
             className="block text-gray-800 hover:text-red-600 hover:bg-gray-100 font-medium transition transform hover:scale-105 px-4 py-2 rounded-md"
           >
             Contact

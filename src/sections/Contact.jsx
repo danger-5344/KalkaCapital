@@ -4,7 +4,7 @@ import { faPhone, faEnvelope, faMapMarkerAlt } from "@fortawesome/free-solid-svg
 
 const ContactSection = () => {
   return (
-    <section className=" py-16">
+    <section className=" py-16 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-12">
         {/* Left Side: Contact Cards */}
         <div className="space-y-6">
